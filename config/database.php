@@ -32,6 +32,10 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
+    
+    'options' => extension_loaded('pdo_mysql') ? array_filter([
+    PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA', base_path('database/ca.pem')),
+        ]) : [],
 
     'connections' => [
 
