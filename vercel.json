@@ -13,8 +13,8 @@
       "dest": "/public/build/$1"
     },
     {
-      "src": "/favicon.ico",
-      "dest": "/public/favicon.ico"
+      "src": "/(.*\\.(?:png|jpg|jpeg|gif|svg|ico|webp|css|js))",
+      "dest": "/public/$1"
     },
     {
       "src": "/(.*)",
