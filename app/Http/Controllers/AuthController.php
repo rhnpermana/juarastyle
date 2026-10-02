@@ -34,7 +34,7 @@ class AuthController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        return view('profile', compact('user'));
+        return view('profile/index', compact('user'));
     }
 
     // Logout user
