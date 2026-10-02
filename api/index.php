@@ -1,6 +1,6 @@
 <?php
 
-// 1. Buat folder cache dan views di direktori /tmp jika belum ada
+// 1. Buat folder temporary di /tmp
 $storageDirs = [
     '/tmp/storage/framework/views',
     '/tmp/storage/framework/cache',
@@ -14,7 +14,7 @@ foreach ($storageDirs as $dir) {
     }
 }
 
-// 2. Set environment variable agar Laravel menyimpan cache di /tmp
+// 2. Set environment path cache
 putenv('APP_SERVICES_CACHE=/tmp/bootstrap/cache/services.php');
 putenv('APP_PACKAGES_CACHE=/tmp/bootstrap/cache/packages.php');
 putenv('APP_CONFIG_CACHE=/tmp/bootstrap/cache/config.php');
@@ -22,5 +22,8 @@ putenv('APP_ROUTES_CACHE=/tmp/bootstrap/cache/routes.php');
 putenv('APP_EVENTS_CACHE=/tmp/bootstrap/cache/events.php');
 putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 
-// 3. Jalankan index.php bawaan Laravel
+// 3. Pastikan path view membaca direktori root proyek
+putenv('VIEW_PATHS=' . __DIR__ . '/../resources/views');
+
+// 4. Jalankan aplikasi Laravel
 require __DIR__ . '/../public/index.php';
